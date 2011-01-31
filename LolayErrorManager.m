@@ -4,6 +4,8 @@
 //
 #import "LolayErrorManager.h"
 
+#define LolayErrorLocalizedTitleKey @"LolayErrorLocalizedTitleKey_"
+
 @interface LolayErrorManager ()
 
 @property (nonatomic, assign) BOOL showingError;
@@ -49,7 +51,12 @@
 		[[NSString stringWithFormat:@"%@\n%@\n(%@:%i)", error.localizedDescription, error.localizedRecoverySuggestion, error.domain, error.code] retain] :
 		[[NSString stringWithFormat:@"%@\n(%@:%i)", error.localizedDescription, error.domain, error.code] retain];
 		
-		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Whoops!" message:message delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+		NSString* title = [error.userInfo objectForKey:LolayErrorLocalizedTitleKey];
+		if (title.length == 0) {
+			title = @"Whoops!";
+		}
+		
+		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title message:message delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
 		[message release];
 		[alert show];
 		[alert release];
@@ -67,14 +74,30 @@
 }
 
 - (void) presentError:(NSInteger) code description:(NSString*) description recoverySuggestion:(NSString*) recoverySuggestion {
+	return [self presentError:code description:description recoverySuggestion:recoverySuggestion title:nil];
+}
+
+- (void) presentError:(NSInteger) code description:(NSString*) description recoverySuggestion:(NSString*) recoverySuggestion title:(NSString*) title {
 	[self presentError:[self createError:code description:description recoverySuggestion:recoverySuggestion]];
 }
 
 - (NSError*) createError:(NSInteger) code description:(NSString*) description recoverySuggestion:(NSString*) recoverySuggestion {
-	return [NSError errorWithDomain:self.domain code:code userInfo:
-			[NSDictionary dictionaryWithObjectsAndKeys:description, NSLocalizedDescriptionKey,
-			 recoverySuggestion, NSLocalizedRecoverySuggestionErrorKey,
-			 nil]];
+	return [self createError:code description:description recoverySuggestion:recoverySuggestion title:nil];
+}
+
+- (NSError*) createError:(NSInteger) code description:(NSString*) description recoverySuggestion:(NSString*) recoverySuggestion title:(NSString*) title {
+	NSMutableDictionary* userInfo = [NSMutableDictionary new];
+	if (description) {
+		[userInfo setObject:description forKey:NSLocalizedDescriptionKey];
+	}
+	if (recoverySuggestion) {
+		[userInfo setObject:recoverySuggestion forKey:NSLocalizedRecoverySuggestionErrorKey];
+	}
+	if (title) {
+		[userInfo setObject:title forKey:LolayErrorLocalizedTitleKey];
+	}
+	
+	return [NSError errorWithDomain:self.domain code:code userInfo:[userInfo autorelease]];
 }
 
 #pragma mark -
