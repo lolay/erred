@@ -16,7 +16,7 @@
 @implementation LolayErrorManager
 
 - (id) initWithDomain:(NSString*) inDomain {
-	NSLog(@"[LolayErrorManager init] enter");
+	DLog(@"enter");
 	self = [super init];
 	
 	if (self) {
@@ -34,7 +34,7 @@
 }
 
 - (void) presentError:(NSError*) error {
-	NSLog(@"[LolayErrorManager presentError] enter error=%@", error);
+	DLog(@"enter error=%@", error);
 	if (error == nil) {
 		return;
 	}
@@ -104,7 +104,7 @@
 #pragma mark Alert View Delegate Methods
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
-	NSLog(@"[LolayErrorManager alertView] enter");
+	DLog(@"enter");
 	self.showingError = NO;
 }
 
