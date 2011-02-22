@@ -4,6 +4,8 @@
 //
 #import <Foundation/Foundation.h>
 
+#define LolayErrorLocalizedTitleKey @"LolayErrorLocalizedTitleKey_"
+
 @interface LolayErrorManager : NSObject <UIAlertViewDelegate>
 
 - (id) initWithDomain:(NSString*) inDomain;

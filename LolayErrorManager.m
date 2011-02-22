@@ -4,8 +4,6 @@
 //
 #import "LolayErrorManager.h"
 
-#define LolayErrorLocalizedTitleKey @"LolayErrorLocalizedTitleKey_"
-
 @interface LolayErrorManager ()
 
 @property (nonatomic, assign) BOOL showingError;
