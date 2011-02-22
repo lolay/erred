@@ -78,7 +78,7 @@
 }
 
 - (void) presentError:(NSInteger) code description:(NSString*) description recoverySuggestion:(NSString*) recoverySuggestion title:(NSString*) title {
-	[self presentError:[self createError:code description:description recoverySuggestion:recoverySuggestion]];
+	[self presentError:[self createError:code description:description recoverySuggestion:recoverySuggestion title:title]];
 }
 
 - (NSError*) createError:(NSInteger) code description:(NSString*) description recoverySuggestion:(NSString*) recoverySuggestion {
