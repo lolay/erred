@@ -13,8 +13,8 @@
 
 @implementation LolayErrorManager
 
-@synthesize showingError;
-@synthesize domain;
+@synthesize showingError = showingError_;
+@synthesize domain = domain_;
 
 - (id) initWithDomain:(NSString*) inDomain {
 	DLog(@"enter");
