@@ -75,18 +75,34 @@
 }
 
 - (void) presentError:(NSInteger) code description:(NSString*) description recoverySuggestion:(NSString*) recoverySuggestion {
-	return [self presentError:code description:description recoverySuggestion:recoverySuggestion title:nil];
+	return [self presentError:code description:description recoverySuggestion:recoverySuggestion title:nil error:nil];
+}
+
+- (void) presentError:(NSInteger) code description:(NSString*) description recoverySuggestion:(NSString*) recoverySuggestion error:(NSError*) error {
+	return [self presentError:code description:description recoverySuggestion:recoverySuggestion title:nil error:error];
 }
 
 - (void) presentError:(NSInteger) code description:(NSString*) description recoverySuggestion:(NSString*) recoverySuggestion title:(NSString*) title {
-	[self presentError:[self createError:code description:description recoverySuggestion:recoverySuggestion title:title]];
+	[self presentError:[self createError:code description:description recoverySuggestion:recoverySuggestion title:title error:nil]];
+}
+
+- (void) presentError:(NSInteger) code description:(NSString*) description recoverySuggestion:(NSString*) recoverySuggestion title:(NSString*) title error:(NSError*) error {
+	[self presentError:[self createError:code description:description recoverySuggestion:recoverySuggestion title:title error:error]];
 }
 
 - (NSError*) createError:(NSInteger) code description:(NSString*) description recoverySuggestion:(NSString*) recoverySuggestion {
-	return [self createError:code description:description recoverySuggestion:recoverySuggestion title:nil];
+	return [self createError:code description:description recoverySuggestion:recoverySuggestion title:nil error:nil];
+}
+
+- (NSError*) createError:(NSInteger) code description:(NSString*) description recoverySuggestion:(NSString*) recoverySuggestion error:(NSError*) error {
+	return [self createError:code description:description recoverySuggestion:recoverySuggestion title:nil error:error];
 }
 
 - (NSError*) createError:(NSInteger) code description:(NSString*) description recoverySuggestion:(NSString*) recoverySuggestion title:(NSString*) title {
+	return [self createError:code description:description recoverySuggestion:recoverySuggestion title:title error:nil];
+}
+
+- (NSError*) createError:(NSInteger) code description:(NSString*) description recoverySuggestion:(NSString*) recoverySuggestion title:(NSString*) title error:(NSError*) error {
 	NSMutableDictionary* userInfo = [NSMutableDictionary new];
 	if (description) {
 		[userInfo setObject:description forKey:NSLocalizedDescriptionKey];
@@ -96,6 +112,9 @@
 	}
 	if (title) {
 		[userInfo setObject:title forKey:LolayErrorLocalizedTitleKey];
+	}
+	if (error) {
+		[userInfo setObject:error forKey:NSUnderlyingErrorKey];
 	}
 	
 	return [NSError errorWithDomain:self.domain code:code userInfo:[userInfo autorelease]];
