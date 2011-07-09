@@ -13,6 +13,7 @@
 
 @implementation LolayErrorManager
 
+@synthesize delegate = delegate_;
 @synthesize showingError = showingError_;
 @synthesize domain = domain_;
 
@@ -21,6 +22,7 @@
 	self = [super init];
 	
 	if (self) {
+		self.delegate = nil;
 		self.domain = inDomain;
 		self.showingError = NO;
 	}
@@ -32,6 +34,52 @@
 	self.domain = nil;
 	
 	[super dealloc];
+}
+
+- (NSString*) localizedString:(NSString*) key {
+	if ([self.delegate respondsToSelector:@selector(errorManager:localizedString:)]) {
+		return [self.delegate errorManager:self localizedString:key];
+	}
+	
+	return NSLocalizedString(key, nil);
+}
+
+- (NSString*) titleForError:(NSError*) error {
+	if ([self.delegate respondsToSelector:@selector(errorManager:titleForError:)]) {
+		return [self.delegate errorManager:self titleForError:error];
+	}
+	
+	NSString* title = [error.userInfo objectForKey:LolayErrorLocalizedTitleKey];
+	if ([title length] == 0) {
+		title = NSLocalizedString(@"error-localizedTitle", @"Error Title Text");
+		if ([title length] == 0 || [title isEqualToString:@"error-localizedTitle"]) {
+			title = @"Whoops!";
+		}
+	}
+	return title;
+}
+
+- (NSString*) messageForError:(NSError*) error {
+	if ([self.delegate respondsToSelector:@selector(errorManager:messageForError:)]) {
+		return [self.delegate errorManager:self messageForError:error];
+	}
+	
+	NSString* message = [error.localizedRecoverySuggestion length] > 0 ?
+	[NSString stringWithFormat:@"%@\n%@\n(%@:%i)", error.localizedDescription, error.localizedRecoverySuggestion, error.domain, error.code] :
+	[NSString stringWithFormat:@"%@\n(%@:%i)", error.localizedDescription, error.domain, error.code];
+	return message;
+}
+
+- (NSString*) buttonTextForError:(NSError*) error {
+	if ([self.delegate respondsToSelector:@selector(errorManager:buttonTextForError:)]) {
+		return [self.delegate errorManager:self buttonTextForError:error];
+	}
+	
+	NSString* buttonText = NSLocalizedString(@"error-buttonText", @"Error Button Text Button");
+	if ([buttonText length] == 0 || [buttonText isEqualToString:@"error-buttonText"]) {
+		buttonText = @"Ok";
+	}
+	return buttonText;
 }
 
 - (void) presentErrorCode:(NSInteger) code {
@@ -64,19 +112,12 @@
 	if (! self.showingError) {
 		self.showingError = YES;
 		
-		NSString* message = error.localizedRecoverySuggestion != nil ?
-		[[NSString stringWithFormat:@"%@\n%@\n(%@:%i)", error.localizedDescription, error.localizedRecoverySuggestion, error.domain, error.code] retain] :
-		[[NSString stringWithFormat:@"%@\n(%@:%i)", error.localizedDescription, error.domain, error.code] retain];
+		NSString* title = [self titleForError:error];
+		NSString* message = [self messageForError:error];
+		NSString* buttonText = [self buttonTextForError:error];
 		
-		NSString* title = [error.userInfo objectForKey:LolayErrorLocalizedTitleKey];
-		if (title.length == 0) {
-			title = @"Whoops!";
-		}
-		
-		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title message:message delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
-		[message release];
+		UIAlertView* alert = [[[UIAlertView alloc] initWithTitle:title message:message delegate:self cancelButtonTitle:buttonText otherButtonTitles:nil] autorelease];
 		[alert show];
-		[alert release];
 	}
 }
 
@@ -128,12 +169,12 @@
 		recoveryKey = [recoveryKey stringByAppendingFormat:@"-%@", suffix];
 	}
 	
-	NSString* title = NSLocalizedString(titleKey, @"Error title");
-	NSString* description = NSLocalizedString(descriptionKey, @"Error Description");
-	NSString* recoverySuggestion = NSLocalizedString(recoveryKey, @"Error Recovery Suggestion");
+	NSString* title = [self localizedString:titleKey];
+	NSString* description = [self localizedString:descriptionKey];
+	NSString* recoverySuggestion = [self localizedString:recoveryKey];
 	
 	if ([title length] == 0 || [title isEqualToString:titleKey]) {
-		title = NSLocalizedString(@"error-localizedTitle", @"Error Default Title");
+		title = [self localizedString:@"error-localizedTitle"];
 		
 		if ([title length] == 0 || [title isEqualToString:@"error-localizedTitle"]) {
 			title = nil;
@@ -141,7 +182,7 @@
 	}
 	
 	if ([description length] == 0 || [description isEqualToString:descriptionKey]) {
-		description = NSLocalizedString(@"error-localizedDescription", @"Error Default Description");
+		description = [self localizedString:@"error-localizedDescription"];
 		
 		if ([description length] == 0 || [description isEqualToString:@"error-localizedDescription"]) {
 			description = nil;
@@ -149,7 +190,7 @@
 	}
 	
 	if ([recoverySuggestion length] == 0 || [recoverySuggestion isEqualToString:recoveryKey]) {
-		recoverySuggestion = NSLocalizedString(@"error-recoverySuggestion", @"Error Default Recovery Suggestion");
+		recoverySuggestion = [self localizedString:@"error-recoverySuggestion"];
 		
 		if ([recoverySuggestion length] == 0 || [recoverySuggestion isEqualToString:@"error-recoverySuggestion"]) {
 			recoverySuggestion = nil;
@@ -192,7 +233,7 @@
 #pragma mark -
 #pragma mark Alert View Delegate Methods
 
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+- (void) alertView:(UIAlertView*) alertView clickedButtonAtIndex:(NSInteger) buttonIndex {
 	DLog(@"enter");
 	self.showingError = NO;
 }

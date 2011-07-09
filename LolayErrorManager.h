@@ -3,10 +3,13 @@
 //  Copyright 2011 Lolay, Inc. All rights reserved.
 //
 #import <Foundation/Foundation.h>
+#import "LolayErrorDelegate.h"
 
 #define LolayErrorLocalizedTitleKey @"LolayErrorLocalizedTitleKey_"
 
 @interface LolayErrorManager : NSObject <UIAlertViewDelegate>
+
+@property (nonatomic, assign) id<LolayErrorDelegate> delegate;
 
 - (id) initWithDomain:(NSString*) inDomain;
 					   
