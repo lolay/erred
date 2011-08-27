@@ -8,6 +8,8 @@
 
 @optional
 
+- (void) errorManager:(LolayErrorManager*) errorManager errorPresented:(NSError*) error;
+
 // Return string for the key
 - (NSString*) errorManager:(LolayErrorManager*) errorManager localizedString:(NSString*) key;
 

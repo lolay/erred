@@ -118,6 +118,10 @@
 		
 		UIAlertView* alert = [[[UIAlertView alloc] initWithTitle:title message:message delegate:self cancelButtonTitle:buttonText otherButtonTitles:nil] autorelease];
 		[alert show];
+		
+		if (self.delegate && [self.delegate respondsToSelector:@selector(errorManager:errorPresented:)]) {
+			[self.delegate errorManager:self errorPresented:error];
+		}
 	}
 }
 
