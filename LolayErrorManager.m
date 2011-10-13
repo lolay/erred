@@ -30,12 +30,6 @@
 	return self;
 }
 
-- (void) dealloc {
-	self.domain = nil;
-	
-	[super dealloc];
-}
-
 - (NSString*) localizedString:(NSString*) key {
 	if ([self.delegate respondsToSelector:@selector(errorManager:localizedString:)]) {
 		return [self.delegate errorManager:self localizedString:key];
@@ -116,7 +110,7 @@
 		NSString* message = [self messageForError:error];
 		NSString* buttonText = [self buttonTextForError:error];
 		
-		UIAlertView* alert = [[[UIAlertView alloc] initWithTitle:title message:message delegate:self cancelButtonTitle:buttonText otherButtonTitles:nil] autorelease];
+		UIAlertView* alert = [[UIAlertView alloc] initWithTitle:title message:message delegate:self cancelButtonTitle:buttonText otherButtonTitles:nil];
 		[alert show];
 		
 		if (self.delegate && [self.delegate respondsToSelector:@selector(errorManager:errorPresented:)]) {
