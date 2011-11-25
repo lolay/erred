@@ -9,7 +9,7 @@
 
 @interface LolayErrorManager : NSObject <UIAlertViewDelegate>
 
-@property (nonatomic, assign) id<LolayErrorDelegate> delegate;
+@property (nonatomic, unsafe_unretained) id<LolayErrorDelegate> delegate;
 
 - (id) initWithDomain:(NSString*) inDomain;
 					   
