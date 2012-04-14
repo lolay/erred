@@ -20,6 +20,7 @@
 
 @optional
 
+- (BOOL) errorManager:(LolayErrorManager*) errorManager shouldPresentError:(NSError*) error;
 - (void) errorManager:(LolayErrorManager*) errorManager errorPresented:(NSError*) error;
 
 // Return string for the key

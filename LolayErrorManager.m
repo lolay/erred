@@ -116,17 +116,24 @@
 	}
 	
 	if (! self.showingError) {
-		self.showingError = YES;
+		BOOL presentError = YES;
+		if ([self.delegate respondsToSelector:@selector(errorManager:shouldPresentError:)]) {
+			presentError = [self.delegate errorManager:self shouldPresentError:error];
+		}
 		
-		NSString* title = [self titleForError:error];
-		NSString* message = [self messageForError:error];
-		NSString* buttonText = [self buttonTextForError:error];
-		
-		UIAlertView* alert = [[UIAlertView alloc] initWithTitle:title message:message delegate:self cancelButtonTitle:buttonText otherButtonTitles:nil];
-		[alert show];
-		
-		if (self.delegate && [self.delegate respondsToSelector:@selector(errorManager:errorPresented:)]) {
-			[self.delegate errorManager:self errorPresented:error];
+		if (presentError) {
+			self.showingError = YES;
+			
+			NSString* title = [self titleForError:error];
+			NSString* message = [self messageForError:error];
+			NSString* buttonText = [self buttonTextForError:error];
+			
+			UIAlertView* alert = [[UIAlertView alloc] initWithTitle:title message:message delegate:self cancelButtonTitle:buttonText otherButtonTitles:nil];
+			[alert show];
+			
+			if (self.delegate && [self.delegate respondsToSelector:@selector(errorManager:errorPresented:)]) {
+				[self.delegate errorManager:self errorPresented:error];
+			}
 		}
 	}
 }

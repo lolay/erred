@@ -24,7 +24,10 @@
 @property (nonatomic, unsafe_unretained) id<LolayErrorDelegate> delegate;
 
 - (id) initWithDomain:(NSString*) inDomain;
-					   
+
+- (NSString*) titleForError:(NSError*) error;
+- (NSString*) messageForError:(NSError*) error;
+- (NSString*) buttonTextForError:(NSError*) error;
 - (void) presentErrorCode:(NSInteger) code;
 - (void) presentErrorCode:(NSInteger) code suffix:(NSString*) suffix;
 - (void) presentErrorCode:(NSInteger) code error:(NSError*) error;
