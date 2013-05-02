@@ -19,7 +19,7 @@
 @interface LolayErrorManager ()
 
 @property (nonatomic, assign) BOOL showingError;
-@property (nonatomic, strong) NSString* domain;
+@property (nonatomic, strong, readwrite) NSString* domain;
 
 @end
 
