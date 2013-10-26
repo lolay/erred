@@ -71,8 +71,8 @@
 	}
 	
 	NSString* message = [error.localizedRecoverySuggestion length] > 0 ?
-	[NSString stringWithFormat:@"%@\n%@\n(%@:%i)", error.localizedDescription, error.localizedRecoverySuggestion, error.domain, error.code] :
-	[NSString stringWithFormat:@"%@\n(%@:%i)", error.localizedDescription, error.domain, error.code];
+	[NSString stringWithFormat:@"%@\n%@\n(%@:%li)", error.localizedDescription, error.localizedRecoverySuggestion, error.domain, (long) error.code] :
+	[NSString stringWithFormat:@"%@\n(%@:%li)", error.localizedDescription, error.domain, (long) error.code];
 	return message;
 }
 
@@ -177,9 +177,9 @@
 }
 
 - (NSError*) createError:(NSInteger) code suffix:(NSString*) suffix error:(NSError*) error {
-	NSString* titleKey = [NSString stringWithFormat:@"error-%i-localizedTitle", code];
-	NSString* descriptionKey = [NSString stringWithFormat:@"error-%i-localizedDescription", code];
-	NSString* recoveryKey = [NSString stringWithFormat:@"error-%i-recoverySuggestion", code];
+	NSString* titleKey = [NSString stringWithFormat:@"error-%li-localizedTitle", (long) code];
+	NSString* descriptionKey = [NSString stringWithFormat:@"error-%li-localizedDescription", (long) code];
+	NSString* recoveryKey = [NSString stringWithFormat:@"error-%li-recoverySuggestion", (long) code];
 	if (suffix) {
 		titleKey = [titleKey stringByAppendingFormat:@"-%@", suffix];
 		descriptionKey = [descriptionKey stringByAppendingFormat:@"-%@", suffix];
