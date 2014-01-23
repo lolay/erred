@@ -1,0 +1,19 @@
+// Errors
+"error-1-localizedTitle" = "WTF";
+"error-1-localizedDescription" = "HUH";
+"error-1-recoverySuggestion" = "BUH";
+
+"error-localizedTitle" = "WTF";
+"error-localizedDescription" = "HUH";
+"error-recoverySuggestion" = "BUH";
+
+"error-1-localizedTitle-LOL" = "WTF";
+"error-1-localizedDescription-LOL" = "HUH";
+"error-1-recoverySuggestion-LOL" = "BUH";
+
+"error-localizedTitle" = "Whoops!";
+
+"error-1-localizedDescription" = "You're an error.";
+"error-1-recoverySuggestion" = "Test well.";
+
+
