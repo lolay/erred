@@ -72,11 +72,11 @@
 		DC94B543188FAA500058E6E0 /* OCMockObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCMockObject.h; sourceTree = "<group>"; };
 		DC94B544188FAA500058E6E0 /* OCMockRecorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCMockRecorder.h; sourceTree = "<group>"; };
 		DC94B547188FB4990058E6E0 /* LolayErrorManagerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LolayErrorManagerTests.m; sourceTree = "<group>"; };
-		DC94B54A189036FC0058E6E0 /* LolayErrorDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LolayErrorDelegate.h; sourceTree = SOURCE_ROOT; };
-		DC94B54B189036FC0058E6E0 /* LolayErrorManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LolayErrorManager.h; sourceTree = SOURCE_ROOT; };
-		DC94B54C189036FC0058E6E0 /* LolayErrorManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LolayErrorManager.m; sourceTree = SOURCE_ROOT; };
-		DC94B54D189036FC0058E6E0 /* NSError+Lolay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSError+Lolay.h"; sourceTree = SOURCE_ROOT; };
-		DC94B54E189036FC0058E6E0 /* NSError+Lolay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSError+Lolay.m"; sourceTree = SOURCE_ROOT; };
+		DC94B54A189036FC0058E6E0 /* LolayErrorDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LolayErrorDelegate.h; sourceTree = "<group>"; };
+		DC94B54B189036FC0058E6E0 /* LolayErrorManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LolayErrorManager.h; sourceTree = "<group>"; };
+		DC94B54C189036FC0058E6E0 /* LolayErrorManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LolayErrorManager.m; sourceTree = "<group>"; };
+		DC94B54D189036FC0058E6E0 /* NSError+Lolay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSError+Lolay.h"; sourceTree = "<group>"; };
+		DC94B54E189036FC0058E6E0 /* NSError+Lolay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSError+Lolay.m"; sourceTree = "<group>"; };
 		DC94B557189091870058E6E0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = EMSInfoPlist.strings; sourceTree = "<group>"; };
 		DC94B559189091870058E6E0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = Localizable.strings; sourceTree = "<group>"; };
 		DC94B55E189185D70058E6E0 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -376,14 +376,10 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = (
-					"$(inherited)",
-					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
-					"\"$(SRCROOT)/OCMock\"",
-				);
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
 			};
 			name = Debug;
 		};
@@ -413,13 +409,9 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = (
-					"$(inherited)",
-					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
-					"\"$(SRCROOT)/OCMock\"",
-				);
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -427,34 +419,18 @@
 		DC94B52F188FA5DD0058E6E0 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				DSTROOT = /tmp/LolayErred.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "LolayErred/LolayErred-Prefix.pch";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					/Users/felix/Freelance/Lolay/SUBMODULES/LERR/OCMock,
-					"\"$(SRCROOT)/OCMock\"",
-				);
-				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
 			};
 			name = Debug;
 		};
 		DC94B530188FA5DD0058E6E0 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				DSTROOT = /tmp/LolayErred.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "LolayErred/LolayErred-Prefix.pch";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					/Users/felix/Freelance/Lolay/SUBMODULES/LERR/OCMock,
-					"\"$(SRCROOT)/OCMock\"",
-				);
-				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
 			};
 			name = Release;
 		};
@@ -477,7 +453,7 @@
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
-					"\"$(SRCROOT)/\"/**",
+					"\"$(SRCROOT)/OCMock\"",
 				);
 				INFOPLIST_FILE = "LolayErredTests/LolayErredTests-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
@@ -510,7 +486,7 @@
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
-					"\"$(SRCROOT)/\"/**",
+					"\"$(SRCROOT)/OCMock\"",
 				);
 				INFOPLIST_FILE = "LolayErredTests/LolayErredTests-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
