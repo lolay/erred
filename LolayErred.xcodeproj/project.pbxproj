@@ -82,6 +82,7 @@
 		DC94B55E189185D70058E6E0 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		DC94B56018919D170058E6E0 /* MockDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MockDelegate.h; sourceTree = "<group>"; };
 		DC94B56118919D170058E6E0 /* MockDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MockDelegate.m; sourceTree = "<group>"; };
+		DC9D54ED189743B70061D9AD /* LolayErred.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LolayErred.podspec; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +112,7 @@
 		DC94B502188FA5DD0058E6E0 = {
 			isa = PBXGroup;
 			children = (
+				DC9D54ED189743B70061D9AD /* LolayErred.podspec */,
 				DC94B53D188FAA500058E6E0 /* OCMock */,
 				DC94B510188FA5DD0058E6E0 /* LolayErred */,
 				DC94B524188FA5DD0058E6E0 /* LolayErredTests */,
