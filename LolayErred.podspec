@@ -16,7 +16,8 @@ Pod::Spec.new do |s|
         :tag => "0.5.0"
     }
     s.source_files      = 'LolayErred/*.{h,m}','LolayErredTests/*.{h,m}'
+	s.dependency 'OCMock', '~> 2.2'
     s.requires_arc      = true
 	s.frameworks = 'XCTest','UIKit','Foundation'
-	s.ios.deployment_target = '6.0'
+	s.ios.deployment_target = '7.0'
 end
