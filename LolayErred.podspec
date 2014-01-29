@@ -15,7 +15,7 @@ Pod::Spec.new do |s|
         :git => 'https://github.com/lolay/erred.git',
         :tag => "0.5.0"
     }
-    s.source_files      = '*.*'
+    s.source_files      = 'LolayErred/*.{h,m}','LolayErredTests/*.{h,m}'
     s.requires_arc      = true
 	s.frameworks = 'XCTest','UIKit','Foundation'
 	s.ios.deployment_target = '6.0'
