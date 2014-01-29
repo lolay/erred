@@ -20,9 +20,7 @@
 		DC94B54F189036FC0058E6E0 /* LolayErrorManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DC94B54C189036FC0058E6E0 /* LolayErrorManager.m */; };
 		DC94B551189036FC0058E6E0 /* NSError+Lolay.m in Sources */ = {isa = PBXBuildFile; fileRef = DC94B54E189036FC0058E6E0 /* NSError+Lolay.m */; };
 		DC94B552189036FC0058E6E0 /* NSError+Lolay.m in Sources */ = {isa = PBXBuildFile; fileRef = DC94B54E189036FC0058E6E0 /* NSError+Lolay.m */; };
-		DC94B55A189091870058E6E0 /* EMSInfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DC94B556189091870058E6E0 /* EMSInfoPlist.strings */; };
 		DC94B55B189091870058E6E0 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = DC94B558189091870058E6E0 /* Localizable.strings */; };
-		DC94B55C189092EA0058E6E0 /* EMSInfoPlist.strings in CopyFiles */ = {isa = PBXBuildFile; fileRef = DC94B556189091870058E6E0 /* EMSInfoPlist.strings */; };
 		DC94B55D189092EA0058E6E0 /* Localizable.strings in CopyFiles */ = {isa = PBXBuildFile; fileRef = DC94B558189091870058E6E0 /* Localizable.strings */; };
 		DC94B55F189185D80058E6E0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC94B55E189185D70058E6E0 /* UIKit.framework */; };
 		DC94B56218919D170058E6E0 /* MockDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DC94B56118919D170058E6E0 /* MockDelegate.m */; };
@@ -45,7 +43,6 @@
 			dstPath = "include/$(PRODUCT_NAME)";
 			dstSubfolderSpec = 16;
 			files = (
-				DC94B55C189092EA0058E6E0 /* EMSInfoPlist.strings in CopyFiles */,
 				DC94B55D189092EA0058E6E0 /* Localizable.strings in CopyFiles */,
 				DC94B514188FA5DD0058E6E0 /* LolayErred.h in CopyFiles */,
 			);
@@ -77,7 +74,6 @@
 		DC94B54C189036FC0058E6E0 /* LolayErrorManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LolayErrorManager.m; sourceTree = "<group>"; };
 		DC94B54D189036FC0058E6E0 /* NSError+Lolay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSError+Lolay.h"; sourceTree = "<group>"; };
 		DC94B54E189036FC0058E6E0 /* NSError+Lolay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSError+Lolay.m"; sourceTree = "<group>"; };
-		DC94B557189091870058E6E0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = EMSInfoPlist.strings; sourceTree = "<group>"; };
 		DC94B559189091870058E6E0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = Localizable.strings; sourceTree = "<group>"; };
 		DC94B55E189185D70058E6E0 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		DC94B56018919D170058E6E0 /* MockDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MockDelegate.h; sourceTree = "<group>"; };
@@ -202,11 +198,10 @@
 		DC94B555189091870058E6E0 /* en.lproj */ = {
 			isa = PBXGroup;
 			children = (
-				DC94B556189091870058E6E0 /* EMSInfoPlist.strings */,
 				DC94B558189091870058E6E0 /* Localizable.strings */,
 			);
 			path = en.lproj;
-			sourceTree = SOURCE_ROOT;
+			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
@@ -280,7 +275,6 @@
 			files = (
 				DC94B529188FA5DD0058E6E0 /* InfoPlist.strings in Resources */,
 				DC94B55B189091870058E6E0 /* Localizable.strings in Resources */,
-				DC94B55A189091870058E6E0 /* EMSInfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -325,14 +319,6 @@
 				DC94B528188FA5DD0058E6E0 /* en */,
 			);
 			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		DC94B556189091870058E6E0 /* EMSInfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				DC94B557189091870058E6E0 /* en */,
-			);
-			name = EMSInfoPlist.strings;
 			sourceTree = "<group>";
 		};
 		DC94B558189091870058E6E0 /* Localizable.strings */ = {
