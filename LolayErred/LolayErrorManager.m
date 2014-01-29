@@ -32,13 +32,13 @@
 	static LolayErrorManager* instance = nil;
 	static dispatch_once_t once;
 	dispatch_once(&once, ^{
-		instance = [[LolayErrorManager alloc] initWithDomain:nil];
+		instance = [[LolayErrorManager alloc] initWithDomain:@"NONE"];
 	});
 	return instance;
 }
 
 - (id) initWithDomain:(NSString*) inDomain {
-//	DLog(@"enter");
+	DLog(@"enter");
 	self = [super init];
 	
 	if (self) {
@@ -113,7 +113,7 @@
 }
 
 - (void) presentError:(NSError*) error {
-//	DLog(@"enter error=%@", error);
+	DLog(@"enter error=%@", error);
 	if (error == nil) {
 		return;
 	}
@@ -259,7 +259,7 @@
 #pragma mark Alert View Delegate Methods
 
 - (void) alertView:(UIAlertView*) alertView clickedButtonAtIndex:(NSInteger) buttonIndex {
-//	DLog(@"enter");
+	DLog(@"enter");
 	self.showingError = NO;
 }
 
