@@ -237,7 +237,7 @@
 {
 	NSError* createdError =[self.errorManager createError:1];
 	XCTAssert([createdError isKindOfClass:[NSError class]], @"Create Error Test");
-	XCTAssertEqual(createdError.code ,1 ,@"Create Error Code Matches Code Given");
+	XCTAssertEqual(createdError.code ,(NSInteger) 1,@"Create Error Code Matches Code Given");
 }
 
 - (void) testCreateErrorCodeSuffix
@@ -246,13 +246,13 @@
 	
 	createdError = [self.errorManager createError:1 suffix:@"LOL"];
 	XCTAssert([createdError isKindOfClass:[NSError class]], @"Create Error test");
-	XCTAssertEqual(createdError.code ,1 ,@"Create Error Code Matches Code Given");
+	XCTAssertEqual(createdError.code, (NSInteger) 1 ,@"Create Error Code Matches Code Given");
 	XCTAssert([[createdError.userInfo objectForKey:NSLocalizedDescriptionKey] isEqualToString:@"LOC_DESCRIPTION_CODE_1_SUFFIX_LOL"] ,@"Create Error Suffix Matches Suffix Given");
 	
 	
 	createdError = [self.errorManager createError:1 suffix:@"NOLOL"];
 	XCTAssert([createdError isKindOfClass:[NSError class]], @"Create Error test");
-	XCTAssertEqual(createdError.code ,1 ,@"Create Error Code Matches Code Given");
+	XCTAssertEqual(createdError.code , (NSInteger) 1 ,@"Create Error Code Matches Code Given");
 	XCTAssertFalse([[createdError.userInfo objectForKey:NSLocalizedDescriptionKey] isEqualToString:@"LOC_DESCRIPTION_CODE_1_SUFFIX_LOL"] ,@"Create Error Suffix Matches Suffix Given");
     
 }
@@ -260,28 +260,28 @@
 {
     NSError* createdError = [self.errorManager createError:1 error:self.error];
 	XCTAssert([createdError isKindOfClass:[NSError class]], @"Create Error test");
-	XCTAssertEqual(createdError.code ,1 ,@"Create Error Code Matches Code Given");
+	XCTAssertEqual(createdError.code ,(NSInteger) 1 ,@"Create Error Code Matches Code Given");
 	XCTAssert([[createdError.userInfo objectForKey:NSLocalizedDescriptionKey] isEqualToString:@"LOC_DESCRIPTION_CODE_1"] ,@"Create Error Suffix Matches Suffix Given");
 }
 - (void) testCreateErrorCodeSuffixError
 {
     NSError* createdError = [self.errorManager createError:1 error:self.error];
 	XCTAssert([createdError isKindOfClass:[NSError class]], @"Create Error test");
-	XCTAssertEqual(createdError.code ,1 ,@"Create Error Code Matches Code Given");
+	XCTAssertEqual(createdError.code ,(NSInteger) 1 ,@"Create Error Code Matches Code Given");
 	XCTAssert([[createdError.userInfo objectForKey:NSLocalizedDescriptionKey] isEqualToString:@"LOC_DESCRIPTION_CODE_1"] ,@"Create Error Suffix Matches Suffix Given");
 }
 - (void) testCreateErrorCodeDescriptionRecovery
 {
     NSError* createdError = [self.errorManager createError:1 description:@"D Test" recoverySuggestion:@"R Test"];
 	XCTAssert([createdError isKindOfClass:[NSError class]], @"Create Error test");
-	XCTAssertEqual(createdError.code ,1 ,@"Create Error Code Matches Code Given");
+	XCTAssertEqual(createdError.code ,(NSInteger) 1 ,@"Create Error Code Matches Code Given");
 	XCTAssert([createdError.localizedDescription isEqualToString:@"D Test"] ,@"Create Error Description Matches Description Given");
 }
 - (void) testCreateErrorCodeDescriptionRecoveryError
 {
     NSError* createdError = [self.errorManager createError:1 description:@"D Test" recoverySuggestion:@"R Test" error:self.error];
 	XCTAssert([createdError isKindOfClass:[NSError class]], @"Create Error test");
-	XCTAssertEqual(createdError.code ,1 ,@"Create Error Code Matches Code Given");
+	XCTAssertEqual(createdError.code ,(NSInteger) 1 ,@"Create Error Code Matches Code Given");
 	XCTAssert([createdError.localizedDescription isEqualToString:@"D Test"] ,@"Create Error Description Matches Discription Given");
 	XCTAssert([createdError.localizedRecoverySuggestion isEqualToString:@"R Test"] ,@"Create Error RecoverySuggestion Matches RecoverySuggestion Given");
 }
@@ -289,7 +289,7 @@
 {
     NSError* createdError = [self.errorManager createError:1 description:@"D Test" recoverySuggestion:@"R Test" title:@"T Test"];
 	XCTAssert([createdError isKindOfClass:[NSError class]], @"Create Error test");
-	XCTAssertEqual(createdError.code ,1 ,@"Create Error Code Matches Code Given");
+	XCTAssertEqual(createdError.code ,(NSInteger) 1 ,@"Create Error Code Matches Code Given");
 	XCTAssert([createdError.localizedDescription isEqualToString:@"D Test"] ,@"Create Error Description Matches Discription Given");
 	XCTAssert([createdError.localizedRecoverySuggestion isEqualToString:@"R Test"] ,@"Create Error RecoverySuggestion Matches RecoverySuggestion Given");
 	XCTAssert([[createdError.userInfo objectForKey:@"LolayErrorLocalizedTitleKey_" ] isEqualToString:@"T Test"] ,@"Create Error RecoverySuggestion Matches RecoverySuggestion Given");
@@ -299,7 +299,7 @@
 {
     NSError* createdError = [self.errorManager createError:1 description:@"D Test" recoverySuggestion:@"R Test" title:@"T Test" error:self.error];
 	XCTAssert([createdError isKindOfClass:[NSError class]], @"Create Error test");
-	XCTAssertEqual(createdError.code ,1 ,@"Create Error Code Matches Code Given");
+	XCTAssertEqual(createdError.code ,(NSInteger) 1 ,@"Create Error Code Matches Code Given");
 	XCTAssert([createdError.localizedDescription isEqualToString:@"D Test"] ,@"Create Error Description Matches Discription Given");
 	XCTAssert([createdError.localizedRecoverySuggestion isEqualToString:@"R Test"] ,@"Create Error RecoverySuggestion Matches RecoverySuggestion Given");
 	XCTAssert([[createdError.userInfo objectForKey:@"LolayErrorLocalizedTitleKey_" ] isEqualToString:@"T Test"] ,@"Create Error RecoverySuggestion Matches RecoverySuggestion Given");
