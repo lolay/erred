@@ -19,7 +19,7 @@
 
 #define LolayErrorLocalizedTitleKey @"LolayErrorLocalizedTitleKey_"
 
-@interface LolayErrorManager : NSObject <UIAlertViewDelegate>
+@interface LolayErrorManager : NSObject
 
 @property (nonatomic, unsafe_unretained) id<LolayErrorDelegate> delegate;
 @property (nonatomic, strong, readwrite) NSString* domain;

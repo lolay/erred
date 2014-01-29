@@ -16,7 +16,7 @@
 
 #import "LolayErrorManager.h"
 
-@interface LolayErrorManager ()
+@interface LolayErrorManager () <UIAlertViewDelegate>
 
 @property (nonatomic, assign) BOOL showingError;
 
