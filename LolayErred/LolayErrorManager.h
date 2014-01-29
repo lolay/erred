@@ -22,8 +22,14 @@
 @interface LolayErrorManager : NSObject <UIAlertViewDelegate>
 
 @property (nonatomic, unsafe_unretained) id<LolayErrorDelegate> delegate;
-@property (nonatomic, strong, readonly) NSString* domain;
+@property (nonatomic, strong, readwrite) NSString* domain;
 
++ (LolayErrorManager*) shared;
+
+/*!
+	This is in case you don't want to use the shared, singleton creation and prefer to use your
+	own mechanism to create a single instance (i.e. a factory with constructor injection).
+*/
 - (id) initWithDomain:(NSString*) inDomain;
 
 - (NSString*) titleForError:(NSError*) error;

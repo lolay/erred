@@ -19,7 +19,6 @@
 @interface LolayErrorManager ()
 
 @property (nonatomic, assign) BOOL showingError;
-@property (nonatomic, strong, readwrite) NSString* domain;
 
 @end
 
@@ -28,6 +27,15 @@
 @synthesize delegate = delegate_;
 @synthesize showingError = showingError_;
 @synthesize domain = domain_;
+
++ (LolayErrorManager*) shared {
+	static LolayErrorManager* instance = nil;
+	static dispatch_once_t once;
+	dispatch_once(&once, ^{
+		instance = [[LolayErrorManager alloc] initWithDomain:nil];
+	});
+	return instance;
+}
 
 - (id) initWithDomain:(NSString*) inDomain {
 	DLog(@"enter");

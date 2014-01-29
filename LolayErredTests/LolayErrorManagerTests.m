@@ -304,6 +304,23 @@
 	XCTAssert([createdError.localizedRecoverySuggestion isEqualToString:@"R Test"] ,@"Create Error RecoverySuggestion Matches RecoverySuggestion Given");
 	XCTAssert([[createdError.userInfo objectForKey:@"LolayErrorLocalizedTitleKey_" ] isEqualToString:@"T Test"] ,@"Create Error RecoverySuggestion Matches RecoverySuggestion Given");
 }
+
+- (void) testSingleton {
+	LolayErrorManager* manager = [LolayErrorManager shared];
+	LolayErrorManager* manager2 = [LolayErrorManager shared];
+	
+	XCTAssertEqualObjects(manager, manager2, @"Calling shared twice should return the same object.");
+	
+	XCTAssertNil(manager.domain, @"Domain should not have been set.");
+	XCTAssertNil(manager.delegate, @"Delegate should not have been set.");
+	
+	id delegate = [OCMockObject mockForClass:[MockDelegate class]];
+	manager.delegate = delegate;
+	XCTAssertEqualObjects(delegate, manager.delegate, @"Delegate should be set after setting it.");
+	NSString* domain = @"LMT";
+	manager.domain = domain;
+	XCTAssertEqualObjects(domain, manager.domain, @"Domain should be set after setting it.");
+}
 /*
 - (NSString*) titleForError:(NSError*) error;
 - (NSString*) messageForError:(NSError*) error;
