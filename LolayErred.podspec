@@ -17,6 +17,6 @@ Pod::Spec.new do |s|
     }
     s.source_files      = '*.*'
     s.requires_arc      = true
-	s.frameworks = 'XCTest'
+	s.frameworks = 'XCTest','UIKit','Foundation'
 	s.ios.deployment_target = '6.0'
 end
