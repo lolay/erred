@@ -15,7 +15,7 @@ Pod::Spec.new do |s|
         :git => 'https://github.com/lolay/erred.git',
         :tag => "0.5.0"
     }
-    s.source_files      = 'LolayErred','LolayErredTests'
+    s.source_files      = 'LolayErred/*.{h,m,pch}','LolayErredTests/*.{h,m}'
 	s.dependency 'OCMock', '~> 2.2'
     s.requires_arc      = true
 	s.frameworks = 'XCTest','UIKit','Foundation'
