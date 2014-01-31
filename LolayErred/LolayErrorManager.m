@@ -32,7 +32,7 @@
 	static LolayErrorManager* instance = nil;
 	static dispatch_once_t once;
 	dispatch_once(&once, ^{
-		instance = [[LolayErrorManager alloc] initWithDomain:@"NONE"];
+		instance = [[LolayErrorManager alloc] initWithDomain:nil];
 	});
 	return instance;
 }
@@ -251,7 +251,12 @@
 	if (error) {
 		[userInfo setObject:error forKey:NSUnderlyingErrorKey];
 	}
-	
+	if(!self.domain){
+		NSException* domainNilException = [[NSException alloc] initWithName:@"NSErrorIsNil"
+															   reason:@"NSError domain is Nil"
+															 userInfo:userInfo];
+		@throw domainNilException;
+	}
 	return [NSError errorWithDomain:self.domain code:code userInfo:userInfo];
 }
 
