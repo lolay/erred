@@ -24,6 +24,10 @@
 @property (nonatomic, unsafe_unretained) id<LolayErrorDelegate> delegate;
 @property (nonatomic, strong, readwrite) NSString* domain;
 
+/*!
+	For convenience, but recommend to use constructor injection
+	http://googletesting.blogspot.com/2008/08/where-have-all-singletons-gone.html
+*/
 + (LolayErrorManager*) shared;
 
 /*!
