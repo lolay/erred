@@ -14,7 +14,7 @@ Pod::Spec.new do |s|
         :git => 'https://github.com/lolay/erred.git',
         :tag => "1"
     }
-    s.source_files      = 'LolayErred/*.*'
+    s.source_files      = 'LolayErred/*.{h,m}'
     s.requires_arc      = true
 	s.frameworks = 'UIKit','Foundation'
 	s.ios.deployment_target = '7.0'
