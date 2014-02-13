@@ -112,7 +112,6 @@
 }
 
 - (void) presentError:(NSError*) error {
-	DLog(@"enter error=%@", error);
 	if (error == nil) {
 		return;
 	}
@@ -263,7 +262,6 @@
 #pragma mark Alert View Delegate Methods
 
 - (void) alertView:(UIAlertView*) alertView clickedButtonAtIndex:(NSInteger) buttonIndex {
-	DLog(@"enter");
 	self.showingError = NO;
 }
 
