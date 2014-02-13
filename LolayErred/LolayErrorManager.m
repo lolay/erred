@@ -38,7 +38,6 @@
 }
 
 - (id) initWithDomain:(NSString*) inDomain {
-	DLog(@"enter");
 	self = [super init];
 	
 	if (self) {
