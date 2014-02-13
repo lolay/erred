@@ -1,7 +1,6 @@
 Pod::Spec.new do |s|
-
     s.name              = 'LolayErred'
-    s.version           = '0.5.0'
+    s.version           = '1'
     s.summary           = 'Error Manager and NSError Category and XCTests for each'
     s.homepage          = 'https://github.com/Lolay/Erred'
     s.license           = {
@@ -13,11 +12,10 @@ Pod::Spec.new do |s|
     }
     s.source            = {
         :git => 'https://github.com/lolay/erred.git',
-        :tag => "0.5.0"
+        :tag => "1"
     }
-    s.source_files      = 'LolayErred/*.*','LolayErredTests/*.*'
-	s.dependency 'OCMock', '~> 2.2'
+    s.source_files      = 'LolayErred/*.*'
     s.requires_arc      = true
-	s.frameworks = 'XCTest','UIKit','Foundation'
+	s.frameworks = 'UIKit','Foundation'
 	s.ios.deployment_target = '7.0'
 end
