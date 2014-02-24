@@ -1,0 +1,3 @@
+Lolay Erred for iOS
+-------------------
+This project has a generic way of managing errors. More details to come...
