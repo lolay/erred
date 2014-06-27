@@ -16,6 +16,5 @@ Pod::Spec.new do |s|
     }
     s.source_files      = 'LolayErred/*.{h,m}'
     s.requires_arc      = true
-	s.frameworks = 'UIKit','Foundation'
 	s.ios.deployment_target = '7.0'
 end
