@@ -93,7 +93,7 @@
 
 - (void) testButtonTextForError
 {
-	NSString* buttonTitleTest = @"Ok";
+	NSString* buttonTitleTest = @"OK";
 	NSString* buttonTitle = [self.errorManager buttonTextForError:self.error];
     XCTAssert([buttonTitle isEqualToString:buttonTitleTest], @"Button title for error test");
 }

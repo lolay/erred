@@ -90,7 +90,7 @@
 	
 	NSString* buttonText = NSLocalizedString(@"error-buttonText", @"Error Button Text Button");
 	if ([buttonText length] == 0 || [buttonText isEqualToString:@"error-buttonText"]) {
-		buttonText = @"Ok";
+		buttonText = @"OK";
 	}
 	return buttonText;
 }
