@@ -134,9 +134,23 @@
 			NSString* message = [self messageForError:error];
 			NSString* buttonText = [self buttonTextForError:error];
 			
-			UIAlertView* alert = [[UIAlertView alloc] initWithTitle:title message:message delegate:self cancelButtonTitle:buttonText otherButtonTitles:nil];
-			[alert show];
-			
+            
+            UIAlertController* alertController = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
+            [alertController addAction:[UIAlertAction actionWithTitle:buttonText style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+                self.showingError = NO;
+            }]];
+            
+            id rootViewController = [UIApplication sharedApplication].delegate.window.rootViewController;
+            if([rootViewController isKindOfClass:[UINavigationController class]])
+            {
+                rootViewController = ((UINavigationController *)rootViewController).viewControllers.firstObject;
+            }
+            if([rootViewController isKindOfClass:[UITabBarController class]])
+            {
+                rootViewController = ((UITabBarController *)rootViewController).selectedViewController;
+            }
+            [rootViewController presentViewController:alertController animated:YES completion:nil];
+            
 			if (self.delegate && [self.delegate respondsToSelector:@selector(errorManager:errorPresented:)]) {
 				[self.delegate errorManager:self errorPresented:error];
 			}
@@ -256,13 +270,6 @@
 		@throw domainNilException;
 	}
 	return [NSError errorWithDomain:self.domain code:code userInfo:userInfo];
-}
-
-#pragma mark -
-#pragma mark Alert View Delegate Methods
-
-- (void) alertView:(UIAlertView*) alertView clickedButtonAtIndex:(NSInteger) buttonIndex {
-	self.showingError = NO;
 }
 
 @end
